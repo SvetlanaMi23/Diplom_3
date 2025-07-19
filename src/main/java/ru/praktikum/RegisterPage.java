@@ -2,15 +2,19 @@ package ru.praktikum;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class RegisterPage {
     private WebDriver driver;
     private By nameInput = By.name("name");
-    private By emailInput = By.name("email");
+    private By emailInput =  By.xpath("//label[text()='Email']/following-sibling::input");
     private By passwordInput =By.name("Пароль");
     private By registerButton = By.xpath("//button[text()='Зарегистрироваться']");
-    private By passwordError = By.className("input__error");
-    private By loginButton = By.className("Auth_link__1fOlj");
+    private By passwordError = By.xpath("//p[contains(@class, 'input__error') and text()='Некорректный пароль']");
+    private By loginButton = By.cssSelector("Auth_link__1fOlj");
 
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
