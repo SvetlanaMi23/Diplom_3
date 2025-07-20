@@ -1,6 +1,6 @@
 # Diplom_3
 
-Дипломный проект Автотесты Stellar Burgers. в Yandex и Chrome для Sprint4
+Дипломный проект Автотесты Stellar Burgers. в Yandex и Chrome
 
 ## Совместимость
 
