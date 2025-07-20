@@ -1,0 +1,8 @@
+/.idea/
+/.allure/
+/target/classes/
+/target/generated-sources/
+/target/generated-test-sources/
+/target/test-classes/
+/target/surefire-reports/
+/target/maven-status/
