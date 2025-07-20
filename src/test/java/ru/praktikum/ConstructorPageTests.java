@@ -1,5 +1,6 @@
 package ru.praktikum;
 
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +20,7 @@ public class ConstructorPageTests extends BaseTest {
 
     @Test
     @DisplayName("Переход к вкладке 'Соусы'")
+    @Description("Проверка перехода к вкладке 'Соусы'")
     public void testSaucesTab() {
         constructorPage.clickSauces();
         assertEquals("Соусы", constructorPage.getCurrentTabText());
@@ -26,6 +28,7 @@ public class ConstructorPageTests extends BaseTest {
 
     @Test
     @DisplayName("Переход к вкладке 'Начинки'")
+    @Description("Проверка перехода к вкладке 'Начинки'")
     public void testFillingsTab() {
         constructorPage.clickFillings();
         assertEquals("Начинки", constructorPage.getCurrentTabText());
@@ -33,6 +36,7 @@ public class ConstructorPageTests extends BaseTest {
 
     @Test
     @DisplayName("Переход к вкладке 'Булки'")
+    @Description("Проверка перехода к вкладке 'Булки'")
     public void testBunsTab() {
         constructorPage.clickSauces(); // сначала в другую вкладку
         constructorPage.clickBuns();

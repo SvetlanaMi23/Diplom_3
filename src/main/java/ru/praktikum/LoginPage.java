@@ -1,5 +1,6 @@
 package ru.praktikum;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,24 +19,29 @@ public class LoginPage {
         this.driver = driver;
     }
 
+    @Step("Зарегистрироваться")
     public void login(String email, String password) {
         driver.findElement(emailInput).sendKeys(email);
         driver.findElement(passwordInput).sendKeys(password);
         driver.findElement(loginButton).click();
     }
 
+    @Step("Нажатие кнопки Войти в аккаунт")
     public void clickLoginToAccountButton() {
         driver.findElement(loginToAccountButton).click();
     }
 
+    @Step("Нажатие кнопки Личный кабинет")
     public void clickPersonalCabinetButton() {
         driver.findElement(personalCabinetButton).click();
     }
 
+    @Step("Нажатие кнопки Войти")
     public void clickLoginLink() {
         driver.findElement(loginLink).click();
     }
 
+    @Step("Видна ли кнопка Оформить заказ")
     public boolean isOrderButtonDisplayed() {
         return driver.findElement(orderButton).isDisplayed();
     }
