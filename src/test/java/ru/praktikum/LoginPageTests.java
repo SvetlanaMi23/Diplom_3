@@ -1,6 +1,5 @@
 package ru.praktikum;
 
-import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +17,7 @@ public class LoginPageTests extends BaseTest {
     }
 
     private void loginFromUrl(String url) {
-        driver.get("https://stellarburgers.nomoreparties.site/register");
+        driver.get(BASE_URL + "register");
         RegisterPage registerPage = new RegisterPage(driver);
         String email = "test" + System.currentTimeMillis() + "@ya.ru";
         registerPage.fillForm("Test User", email, "123456");
@@ -31,7 +30,7 @@ public class LoginPageTests extends BaseTest {
     @Test
     @DisplayName("Вход через кнопку 'Войти в аккаунт'")
     public void loginFromMainPage() {
-        driver.get("https://stellarburgers.nomoreparties.site/");
+        driver.get(BASE_URL);
         loginPage.clickLoginToAccountButton();
         loginFromUrl(driver.getCurrentUrl());
     }
@@ -39,7 +38,7 @@ public class LoginPageTests extends BaseTest {
     @Test
     @DisplayName("Вход через Личный кабинет")
     public void loginFromProfile() {
-        driver.get("https://stellarburgers.nomoreparties.site/");
+        driver.get(BASE_URL);
         loginPage.clickPersonalCabinetButton();
         loginFromUrl(driver.getCurrentUrl());
     }
@@ -47,7 +46,7 @@ public class LoginPageTests extends BaseTest {
     @Test
     @DisplayName("Вход из формы регистрации")
     public void loginFromRegistrationForm() {
-        driver.get("https://stellarburgers.nomoreparties.site/register");
+        driver.get(BASE_URL + "register");
         loginPage.clickLoginLink();
         loginFromUrl(driver.getCurrentUrl());
     }
@@ -55,7 +54,7 @@ public class LoginPageTests extends BaseTest {
     @Test
     @DisplayName("Вход из формы восстановления пароля")
     public void loginFromResetForm() {
-        driver.get("https://stellarburgers.nomoreparties.site/forgot-password");
+        driver.get(BASE_URL + "forgot-password");
         loginPage.clickLoginLink();
         loginFromUrl(driver.getCurrentUrl());
     }

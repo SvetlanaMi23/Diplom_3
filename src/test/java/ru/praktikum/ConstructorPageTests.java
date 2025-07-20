@@ -1,6 +1,5 @@
 package ru.praktikum;
 
-import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +13,7 @@ public class ConstructorPageTests extends BaseTest {
     @Before
     public void setUp() {
         super.setUp();
-        driver.get("https://stellarburgers.nomoreparties.site/");
+        driver.get(BASE_URL);
         constructorPage = new ConstructorPage(driver);
     }
 
