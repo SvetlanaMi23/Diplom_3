@@ -1,55 +1,62 @@
 package ru.praktikum;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 import static org.junit.Assert.assertTrue;
 
+@DisplayName("Вход")
 public class LoginPageTests extends BaseTest {
+    private LoginPage loginPage;
 
     @Before
     public void setUp() {
         super.setUp();
+        loginPage = new LoginPage(driver);
     }
 
     private void loginFromUrl(String url) {
+        driver.get("https://stellarburgers.nomoreparties.site/register");
+        RegisterPage registerPage = new RegisterPage(driver);
+        String email = "test" + System.currentTimeMillis() + "@ya.ru";
+        registerPage.fillForm("Test User", email, "123456");
+        registerPage.clickRegister();
         driver.get(url);
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("validUser@yandex.ru", "123456");
-        assertTrue(driver.findElement(By.xpath("//button[text()='Оформить заказ']")).isDisplayed());
+        loginPage.login(email, "123456");
+        assertTrue(loginPage.isOrderButtonDisplayed());
     }
 
     @Test
-    @Description("Вход через кнопку 'Войти в аккаунт'")
+    @DisplayName("Вход через кнопку 'Войти в аккаунт'")
     public void loginFromMainPage() {
         driver.get("https://stellarburgers.nomoreparties.site/");
-        driver.findElement(By.xpath("//button[text()='Войти в аккаунт']")).click();
+        loginPage.clickLoginToAccountButton();
         loginFromUrl(driver.getCurrentUrl());
     }
 
     @Test
-    @Description("Вход через Личный кабинет")
+    @DisplayName("Вход через Личный кабинет")
     public void loginFromProfile() {
         driver.get("https://stellarburgers.nomoreparties.site/");
-        driver.findElement(By.xpath("//p[text()='Личный Кабинет']")).click();
+        loginPage.clickPersonalCabinetButton();
         loginFromUrl(driver.getCurrentUrl());
     }
 
     @Test
-    @Description("Вход из формы регистрации")
+    @DisplayName("Вход из формы регистрации")
     public void loginFromRegistrationForm() {
         driver.get("https://stellarburgers.nomoreparties.site/register");
-        driver.findElement(By.linkText("Войти")).click();
+        loginPage.clickLoginLink();
         loginFromUrl(driver.getCurrentUrl());
     }
 
     @Test
-    @Description("Вход из формы восстановления пароля")
+    @DisplayName("Вход из формы восстановления пароля")
     public void loginFromResetForm() {
         driver.get("https://stellarburgers.nomoreparties.site/forgot-password");
-        driver.findElement(By.linkText("Войти")).click();
+        loginPage.clickLoginLink();
         loginFromUrl(driver.getCurrentUrl());
     }
 }

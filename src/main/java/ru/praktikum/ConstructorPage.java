@@ -3,12 +3,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ConstructorPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
-    private By bunsTab = By.xpath("//*[text()='Булки']");
-    private By saucesTab = By.xpath("//*[text()='Соусы']");
-    private By fillingsTab = By.xpath("//*[text()='Начинки']");
-    private By currentTab = By.cssSelector(".tab_tab_type_current");
+    private final By bunsTab = By.xpath("//*[text()='Булки']");
+    private final By saucesTab = By.xpath("//*[text()='Соусы']");
+    private final By fillingsTab = By.xpath("//*[text()='Начинки']");
+    private final By currentTab = By.cssSelector(".tab_tab_type_current__2BEPc");
 
     public ConstructorPage(WebDriver driver) {
         this.driver = driver;
